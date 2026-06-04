@@ -1,0 +1,25 @@
+{
+  "name": "bento-agent-demo",
+  "version": "1.0.0",
+  "description": "Autonomous agent protected by Bento Guard - Superteam BENTO Beta Bounty submission",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "demo": "node dist/main.js"
+  },
+  "dependencies": {
+    "@bentoguard/sdk": "latest",
+    "@solana/web3.js": "^1.95.0",
+    "bs58": "^6.0.0",
+    "tweetnacl": "^1.0.3",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "ts-node": "^10.9.2",
+    "@types/node": "^22.0.0"
+  },
+  "author": "opencode-agent-jhosep",
+  "license": "MIT"
+}
