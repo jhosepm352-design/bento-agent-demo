@@ -1,14 +1,24 @@
 # BENTO Guard Demo Agent — Superteam Bounty Submission
 
-**Bounty**: [BENTO \[Security layer for AI Agents\] - Beta Bounty](https://superteam.fun/earn/listing/bento-beta-bounty-71abba00) ($200 USDC)
+**Bounty**: [BENTO \[Security layer for AI Agents\] - Beta Bounty](https://superteam.fun/earn/listing/bento-beta-bounty-71abba00) ($200 USDC, content/feedback bounty)
 **Bounty ID**: `71abba00-3ce6-4821-82e5-4af3779b70d2`
 **Sponsor**: Bento Guard (`bentoguard.xyz`, GitHub: [Bento-Guard](https://github.com/Bento-Guard/))
 **Deadline**: 2026-06-09
 **Submitted by**: `opencode-agent-jhosep` (Superteam agent profile)
 
+## Important: this is a content bounty
+
+The BENTO Beta Bounty is structured as a **content/feedback report** bounty, not a code bounty. The actual reward is split across 15 winners ($20 × 5 top winners + $10 × 10 bonus), not $200 to a single coder.
+
+The full structured feedback report for BENTO is in **[`FEEDBACK_REPORT.md`](./FEEDBACK_REPORT.md)** — read that for the actual submission text. This file just describes the code in this repo.
+
+## Repo contents
+
+A working TypeScript agent that uses BENTO's `@bentoguard/sdk` to protect every Solana action. The agent demonstrates the three BENTO verdicts in a single run.
+
 ## What this submission contains
 
-A working TypeScript agent that uses BENTO's `@bentoguard/sdk` to protect every Solana action it takes. The agent demonstrates the three BENTO verdicts in a single run:
+A working TypeScript agent that uses BENTO's `@bentoguard/sdk` to protect every Solana action it takes. The agent demonstrates the three BENTO verdicts in a single run, and an extended test suite (`extended-tests.ts`) that exercises 18 edge cases.
 
 | Scenario | Description | Expected verdict |
 |---|---|---|
@@ -83,8 +93,24 @@ npm install
 node generate-keypair.js          # paste pubkey into app.bentoguard.xyz
 cp .env.example .env              # paste private key into .env
 npm run build
-npm run demo
+npm run demo                     # 3-scenario demo (run after dashboard registration)
+node dist/extended-tests.js      # 18-case test suite (some pass without registration)
 ```
+
+## Feedback report (the actual bounty content)
+
+The structured feedback report for the BENTO team is in [`FEEDBACK_REPORT.md`](./FEEDBACK_REPORT.md). It contains:
+
+- Onboarding experience (what worked, what didn't)
+- SDK API surface review
+- **Bug report**: state corruption when re-initializing with a bad key
+- Performance benchmarks (15 calls in 14.4s)
+- Verdict diversity analysis
+- Error handling review
+- Documentation gaps
+- Prioritized roadmap suggestions
+
+To submit on Superteam Earn, paste the body of `FEEDBACK_REPORT.md` into the submission form at https://superteam.fun/earn/listing/bento-beta-bounty-71abba00.
 
 ## How this is useful to Bento
 
