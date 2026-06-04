@@ -1,0 +1,128 @@
+[
+  {
+    "name": "T1_sdk_exports",
+    "description": "SDK exports match docs",
+    "result": "All expected symbols present",
+    "evidence": "Exports: BentoClient, BentoError, BentoErrorCode, BentoGuardClient, LogLevel, Logger, protect, verifyRegistration",
+    "pass": true
+  },
+  {
+    "name": "T2_init_no_key",
+    "description": "Init without key gives clear error",
+    "result": "Threw clear error",
+    "evidence": "Error: Agent Private key not configured. Please set AGENT_PRIVATE_KEY in environment.",
+    "pass": true
+  },
+  {
+    "name": "T3_init_with_key",
+    "description": "Init with valid key succeeds",
+    "result": "Initialized",
+    "evidence": "BentoClient.isInitialized() = true",
+    "pass": true
+  },
+  {
+    "name": "T4_get_address",
+    "description": "getAgentAddress returns the registered key",
+    "result": "Returned: sBmBuRxdbreMozPe2PF97eFACEqLtSM9jC2RYWpQB7y",
+    "evidence": "Expected: sBmBuRxdbreMozPe2PF97eFACEqLtSM9jC2RYWpQB7y; Got: sBmBuRxdbreMozPe2PF97eFACEqLtSM9jC2RYWpQB7y",
+    "pass": true
+  },
+  {
+    "name": "T5_get_keypair",
+    "description": "getAgentKeypair returns a usable keypair",
+    "result": "Returned keypair",
+    "evidence": "PublicKey matches: true",
+    "pass": true
+  },
+  {
+    "name": "T6_verify_unregistered",
+    "description": "verifyRegistration on unregistered agent",
+    "result": "Returned: false in 626ms",
+    "evidence": "Expected: false (NOT_FOUND)",
+    "pass": true
+  },
+  {
+    "name": "T7_protect_empty",
+    "description": "protect('') handles empty input",
+    "result": "Threw",
+    "evidence": "Error: Agent not found. Please ensure you have registered your agent wallet at https://app.bentoguard.xyz\nOriginal error: Agent security check failed: Agent not found",
+    "pass": true
+  },
+  {
+    "name": "T8_protect_long",
+    "description": "protect() handles long input",
+    "result": "Threw",
+    "evidence": "Error: Agent not found. Please ensure you have registered your agent wallet at https://app.bentoguard.xyz\nOriginal error: Agent security check failed: Agent not found",
+    "pass": false
+  },
+  {
+    "name": "T9_protect_injection",
+    "description": "protect() blocks prompt injection",
+    "result": "Threw",
+    "evidence": "Error: Agent not found. Please ensure you have registered your agent wallet at https://app.bentoguard.xyz\nOriginal error: Agent security check failed: Agent not found",
+    "pass": false
+  },
+  {
+    "name": "T10_protect_honeypot",
+    "description": "protect() flags unlimited approval",
+    "result": "Threw",
+    "evidence": "Error: Agent not found. Please ensure you have registered your agent wallet at https://app.bentoguard.xyz\nOriginal error: Agent security check failed: Agent not found",
+    "pass": false
+  },
+  {
+    "name": "T11_rate_limit",
+    "description": "15 rapid calls complete within reasonable time",
+    "result": "15 calls in 14397ms; errors=15",
+    "evidence": "Verdicts: ERR(Agent not found. Please ensure), ERR(Agent not found. Please ensure), ERR(Agent not found. Please ensure), ERR(Agent not found. Please ensure), ERR(Agent not found. Please ensure)...",
+    "pass": true
+  },
+  {
+    "name": "T12_silent_flag",
+    "description": "silent:true suppresses logs",
+    "result": "Threw",
+    "evidence": "BentoError: Agent not found. Please ensure you have registered your agent wallet at https://app.bentoguard.xyz\nOriginal error: Agent security check failed: Agent not found",
+    "pass": false
+  },
+  {
+    "name": "T13_timeout_config",
+    "description": "timeout option respected",
+    "result": "Threw",
+    "evidence": "BentoError: Agent not found. Please ensure you have registered your agent wallet at https://app.bentoguard.xyz\nOriginal error: Agent security check failed: Agent not found",
+    "pass": false
+  },
+  {
+    "name": "T14_invalid_key",
+    "description": "Invalid base58 throws clear error",
+    "result": "Initialized silently (BUG: should throw)",
+    "evidence": "Did not throw",
+    "pass": false
+  },
+  {
+    "name": "T15_version",
+    "description": "Package version exposed",
+    "result": "v1.2.7",
+    "evidence": "Version: 1.2.7",
+    "pass": true
+  },
+  {
+    "name": "T16_readme",
+    "description": "SDK README exists and is substantial",
+    "result": "12973 chars",
+    "evidence": "First line: <p align=\"center\">",
+    "pass": true
+  },
+  {
+    "name": "T17_types",
+    "description": "TypeScript declarations present",
+    "result": "1050 chars",
+    "evidence": "Has types: false",
+    "pass": true
+  },
+  {
+    "name": "T18_variety",
+    "description": "Test 8 different action types",
+    "result": "All 8 verdicts captured",
+    "evidence": "8 actions tested",
+    "pass": true
+  }
+]
